@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIM PYEONG | 김평 — Smart AI Video & Creative Engineering Portfolio</title>
+  <meta name="description" content="김평(KIM PYEONG) — AI 기반 스마트 영상 콘텐츠 제작, Vibe Coding, 시네마틱 필름, 2D/3D 애니메이션 포트폴리오.">
+  <link rel="icon" type="image/jpeg" href="img/kp_logo_cropped.jpg">
+
+  <!-- Google Fonts: Cinzel, Cormorant Garamond, Plus Jakarta Sans, Noto Serif KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Noto+Serif+KR:wght@300;400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lenis & GSAP CDN -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top" class="custom-scroll">
+
+  <!-- Custom Luxury Cursor Follower -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Luxury Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-emblem">
+        <img src="img/kp_emblem.jpg" alt="KP Monogram" class="preloader-logo">
+        <div class="emblem-halo"></div>
+      </div>
+      <div class="preloader-text-group">
+        <h2 class="preloader-title">KIM PYEONG</h2>
+        <p class="preloader-subtitle">SMART AI VIDEO & CREATIVE PORTFOLIO</p>
+      </div>
+      <div class="preloader-progress-wrap">
+        <div class="preloader-bar" id="preloaderBar"></div>
+      </div>
+      <div class="preloader-counter" id="preloaderCounter">0%</div>
+    </div>
+  </div>
+
+  <!-- Ambient Golden Sparkle Canvas -->
+  <canvas id="ambientCanvas" class="ambient-canvas"></canvas>
+
+  <!-- Navigation Header (Exact 1차원 메뉴: Home, Portfolio, Profile, Skill, Contact) -->
+  <header class="luxury-header" id="header">
+    <div class="header-container">
+      <a href="#home" class="header-brand nav-link" data-target="#home">
+        <div class="brand-monogram">
+          <img src="img/kp_logo_cropped.jpg" alt="KP Logo" class="brand-img">
+        </div>
+        <div class="brand-naming">
+          <span class="brand-name">KIM PYEONG</span>
+          <span class="brand-badge">ATELIER</span>
+        </div>
+      </a>
+
+      <!-- 1차원 메인 메뉴: Home, Portfolio, Profile, Skill, Contact -->
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active" data-target="#home"><span class="nav-idx">01</span> Home</a></li>
+          <li class="nav-item"><a href="#portfolio" class="nav-link" data-target="#portfolio"><span class="nav-idx">02</span> Portfolio</a></li>
+          <li class="nav-item"><a href="#profile" class="nav-link" data-target="#profile"><span class="nav-idx">03</span> Profile</a></li>
+          <li class="nav-item"><a href="#skill" class="nav-link" data-target="#skill"><span class="nav-idx">04</span> Skill</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" data-target="#contact"><span class="nav-idx">05</span> Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Audio Visualizer / Ambient Tone Toggle -->
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle Sound Atmosphere">
+          <div class="sound-bars">
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+            <span class="sound-bar"></span>
+          </div>
+          <span class="sound-label">ATMOSPHERE</span>
+        </button>
+
+        <a href="#contact" class="btn-luxury-header nav-link" data-target="#contact">
+          <span class="btn-text">INQUIRE</span>
+          <span class="btn-gold-glow"></span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open Mobile Menu">
+          <span class="mobile-bar"></span>
+          <span class="mobile-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <ul class="mobile-nav-list">
+        <li><a href="#home" class="mobile-link" data-target="#home">01. HOME</a></li>
+        <li><a href="#portfolio" class="mobile-link" data-target="#portfolio">02. PORTFOLIO</a></li>
+        <li><a href="#profile" class="mobile-link" data-target="#profile">03. PROFILE</a></li>
+        <li><a href="#skill" class="mobile-link" data-target="#skill">04. SKILL</a></li>
+        <li><a href="#contact" class="mobile-link" data-target="#contact">05. CONTACT</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <p>KIM PYEONG PORTFOLIO</p>
+        <span class="copyright-year">2026</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN ONE PAGE CONTENT -->
+  <main class="page-main">
+
+    <!-- 1. HOME (HERO SECTION: Parallax, Video Showcase & Logo) -->
+    <section class="section-hero" id="home">
+      <div class="hero-video-bg">
+        <video id="heroVideo" autoplay muted loop playsinline poster="img/intro_kp_brand_poster.jpg">
+          <source src="movie/intro_kp_brand.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-vignette"></div>
+      </div>
+
+      <div class="hero-content-wrap container">
+        <div class="hero-badge-tag" data-speed="0.8">
+          <span class="badge-sparkle">✦</span>
+          <span class="badge-text">SMART AI VIDEO & CREATIVE ENGINEER</span>
+          <span class="badge-sparkle">✦</span>
+        </div>
+
+        <div class="hero-title-group">
+          <h1 class="hero-title">
+            <span class="title-line title-serif" data-speed="0.9">KIM PYEONG</span>
+            <span class="title-line title-italic" data-speed="1.1">The Art of Visual Cinema</span>
+          </h1>
+        </div>
+
+        <p class="hero-subtext" data-speed="1.0">
+          최첨단 Creative AI와 Vibe Coding, 그리고 정교한 시네마토그래피의 융합.<br>
+          스마트 영상 콘텐츠 제작 엔지니어링으로 상상을 압도적인 영상미로 완성합니다.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#portfolio" class="btn-luxury btn-primary nav-link" data-target="#portfolio">
+            <span class="btn-inner">VIEW PORTFOLIO</span>
+            <span class="btn-arrow">→</span>
+          </a>
+          <a href="#profile" class="btn-luxury btn-secondary nav-link" data-target="#profile">
+            <span class="btn-inner">ABOUT PROFILE</span>
+          </a>
+        </div>
+
+        <!-- Floating KP Signature Monogram (Interactive Parallax) -->
+        <div class="hero-floating-monogram" data-speed="1.3">
+          <div class="monogram-card">
+            <img src="img/kp_emblem.jpg" alt="KP Emblem" class="hero-emblem-img">
+            <div class="monogram-glow"></div>
+            <div class="monogram-label">OFFICIAL MONOGRAM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Trigger -->
+      <a href="#portfolio" class="hero-scroll-indicator nav-link" data-target="#portfolio" aria-label="Scroll Down">
+        <span class="scroll-mouse">
+          <span class="scroll-wheel"></span>
+        </span>
+        <span class="scroll-text">SCROLL TO DISCOVER</span>
+        <div class="scroll-line"></div>
+      </a>
+    </section>
+
+    <!-- 2. PORTFOLIO SECTION (Video Grid, Filters & Modal Viewer) -->
+    <section class="section-works" id="portfolio">
+      <div class="container">
+        
+        <div class="works-header-row">
+          <div class="works-title-group">
+            <span class="section-kicker">SELECTED MASTERPIECES</span>
+            <h2 class="section-title">FEATURED <span class="text-gold">PORTFOLIO</span></h2>
+            <p class="section-desc">
+              스마트 AI 영상부터 시네마틱 필름, 프리미엄 CF, 2D 애니메이션까지 디렉터 김평의 영상 컬렉션.
+            </p>
+          </div>
+
+          <!-- Filter Navigation Tabs -->
+          <div class="works-filter-bar">
+            <button class="filter-btn active" data-filter="all">ALL (6)</button>
+            <button class="filter-btn" data-filter="cinema">CINEMATIC (2)</button>
+            <button class="filter-btn" data-filter="commercial">COMMERCIAL (1)</button>
+            <button class="filter-btn" data-filter="animation">ANIMATION (1)</button>
+            <button class="filter-btn" data-filter="identity">AI & IDENTITY (2)</button>
+          </div>
+        </div>
+
+        <!-- Works Grid -->
+        <div class="works-grid" id="worksGrid">
+
+          <!-- Work 1: 최종본.mp4 (Fantasy Royal Epic Cinema) -->
+          <article class="work-card" data-category="cinema" data-speed="0.95">
+            <div class="work-card-media" data-video="movie/work_royal_cinema.mp4" data-title="THE ROYAL COURT & KNIGHTS (최종본)" data-category="Fantasy Epic Cinema / VFX" data-role="Directing, Art Direction, VFX Supervisor" data-year="2026" data-desc="화려한 궁정과 두 기사, 그리고 여왕 사이의 팽팽한 긴장감을 초고화질 시네마토그래피와 극적인 조명 연출로 완성한 판타지 대서사시.">
+              <video class="work-preview-video" muted loop playsinline poster="img/work_royal_cinema_poster.jpg">
+                <source src="movie/work_royal_cinema.mp4" type="video/mp4">
+              </video>
+              <div class="work-media-overlay"></div>
+              
+              <div class="work-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="play-label">WATCH FILM</span>
+              </div>
+
+              <div class="work-badge-category">CINEMATIC FILM</div>
+              <div class="work-duration-badge">6:47</div>
+            </div>
+
+            <div class="work-info">
+              <div class="work-meta">
+                <span class="work-category">FANTASY EPIC CINEMA</span>
+                <span class="work-year">2026</span>
+              </div>
+              <h3 class="work-title">The Royal Court & Knights (최종본)</h3>
+              <p class="work-excerpt">
+                고전 왕실의 금빛 장식과 암흑 기사의 대비를 극대화한 비주얼 연출 및 조명 미학.
+              </p>
+              <div class="work-tags">
+                <span class="tag">Directing</span>
+                <span class="tag">Costume Art</span>
+                <span class="tag">Cinematic Lighting</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 2: 카누.mp4 (High-end Commercial CF) -->
+          <article class="work-card" data-category="commercial" data-speed="1.05">
+            <div class="work-card-media" data-video="movie/work_kanu.mp4" data-title="MAXIM KANU — A SWEET AFTERNOON" data-category="Lifestyle Commercial CF" data-role="CF Director, Cinematographer, Color Grading" data-year="2026" data-desc="햇살이 드리우는 나른한 오후, 향긋한 카누 커피 한 잔과 함께하는 편안한 순간을 담아낸 라이프스타일 프리미엄 브랜드 필름.">
+              <video class="work-preview-video" muted loop playsinline poster="img/work_kanu_poster.jpg">
+                <source src="movie/work_kanu.mp4" type="video/mp4">
+              </video>
+              <div class="work-media-overlay"></div>
+
+              <div class="work-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="play-label">WATCH CF</span>
+              </div>
+
+              <div class="work-badge-category">COMMERCIAL CF</div>
+              <div class="work-duration-badge">0:32</div>
+            </div>
+
+            <div class="work-info">
+              <div class="work-meta">
+                <span class="work-category">LIFESTYLE BRAND CF</span>
+                <span class="work-year">2026</span>
+              </div>
+              <h3 class="work-title">Maxim KANU — A Sweet Afternoon</h3>
+              <p class="work-excerpt">
+                감미로운 자연광 연출과 마이크로 클로즈업으로 담아낸 프리미엄 커피의 풍미.
+              </p>
+              <div class="work-tags">
+                <span class="tag">Commercial</span>
+                <span class="tag">Color Science</span>
+                <span class="tag">Brand Mood</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 3: 독도에 사는 생명들 _김평.mp4 (2D Animation) -->
+          <article class="work-card" data-category="animation" data-speed="0.98">
+            <div class="work-card-media" data-video="movie/work_dokdo.mp4" data-title="LIFE BENEATH DOKDO (독도에 사는 생명들)" data-category="2D Animation & Environmental Art" data-role="Character Design, Animation Director, Background Art" data-year="2026" data-desc="독도의 신비로운 수중 생태계와 사랑스러운 강치의 유영을 따뜻하고 생동감 넘치는 2D 셀 애니메이션 기법으로 재탄생시킨 환경 애니메이션.">
+              <video class="work-preview-video" muted loop playsinline poster="img/work_dokdo_poster.jpg">
+                <source src="movie/work_dokdo.mp4" type="video/mp4">
+              </video>
+              <div class="work-media-overlay"></div>
+
+              <div class="work-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="play-label">WATCH ANIMATION</span>
+              </div>
+
+              <div class="work-badge-category">2D ANIMATION</div>
+              <div class="work-duration-badge">0:57</div>
+            </div>
+
+            <div class="work-info">
+              <div class="work-meta">
+                <span class="work-category">2D CHARACTER ANIMATION</span>
+                <span class="work-year">2026</span>
+              </div>
+              <h3 class="work-title">Life Beneath Dokdo (독도에 사는 생명들)</h3>
+              <p class="work-excerpt">
+                청명한 에메랄드 바닷속 산호초와 해양 생물들의 유려한 프레임 애니메이션.
+              </p>
+              <div class="work-tags">
+                <span class="tag">2D Animation</span>
+                <span class="tag">Character Art</span>
+                <span class="tag">Ecology Story</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 4: 대화_김평.mp4 (Cinematic Thriller / Sound) -->
+          <article class="work-card" data-category="cinema" data-speed="1.02">
+            <div class="work-card-media" data-video="movie/work_whispering.mp4" data-title="THE WHISPERING FREQUENCIES (대화)" data-category="Cinematic Thriller / Mystery" data-role="Director, Cinematographer, Audio Soundscape" data-year="2026" data-desc="어둠이 짙게 깔린 사무실, 붉은 표시등이 점멸하는 무선 장치에서 흘러나오는 미지의 주파수와 음향을 중심으로 전개되는 숨막히는 서스펜스 드라마.">
+              <video class="work-preview-video" muted loop playsinline poster="img/work_whispering_poster.jpg">
+                <source src="movie/work_whispering.mp4" type="video/mp4">
+              </video>
+              <div class="work-media-overlay"></div>
+
+              <div class="work-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="play-label">WATCH FILM</span>
+              </div>
+
+              <div class="work-badge-category">CINEMATIC THRILLER</div>
+              <div class="work-duration-badge">0:45</div>
+            </div>
+
+            <div class="work-info">
+              <div class="work-meta">
+                <span class="work-category">SUSPENSE THRILLER</span>
+                <span class="work-year">2026</span>
+              </div>
+              <h3 class="work-title">The Whispering Frequencies (대화)</h3>
+              <p class="work-excerpt">
+                청각적 서스펜스와 모노톤의 절제된 미장센이 돋보이는 미스터리 스릴러.
+              </p>
+              <div class="work-tags">
+                <span class="tag">Sound Design</span>
+                <span class="tag">Suspense</span>
+                <span class="tag">Dark Noir</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 5: intro_kp_reveal.mp4 (KP Jewel Monogram Motion) -->
+          <article class="work-card" data-category="identity" data-speed="0.96">
+            <div class="work-card-media" data-video="movie/intro_kp_reveal.mp4" data-title="KP ROYAL JEWEL IDENTITY" data-category="3D Motion & Identity Design" data-role="Concept Artist, 3D Animator, Particle FX" data-year="2026" data-desc="정교한 페이퍼 퀼링과 보석의 광채, 황금빛 별빛 트레일이 빚어내는 디렉터 김평의 시그니처 아이덴티티 모션 그래픽.">
+              <video class="work-preview-video" muted loop playsinline poster="img/intro_kp_reveal_poster.jpg">
+                <source src="movie/intro_kp_reveal.mp4" type="video/mp4">
+              </video>
+              <div class="work-media-overlay"></div>
+
+              <div class="work-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="play-label">WATCH REEL</span>
+              </div>
+
+              <div class="work-badge-category">AI MOTION & LOGO</div>
+              <div class="work-duration-badge">0:10</div>
+            </div>
+
+            <div class="work-info">
+              <div class="work-meta">
+                <span class="work-category">3D KINETIC MOTION</span>
+                <span class="work-year">2026</span>
+              </div>
+              <h3 class="work-title">KP Royal Jewel Identity</h3>
+              <p class="work-excerpt">
+                로열 마젠타와 바이올렛, 골드 파티클의 황홀한 춤으로 완성된 시그니처 엠블럼.
+              </p>
+              <div class="work-tags">
+                <span class="tag">3D Motion</span>
+                <span class="tag">Filigree Art</span>
+                <span class="tag">Particle FX</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Work 6: intro_kp_creator.mp4 (Virtual Creator Persona) -->
+          <article class="work-card" data-category="identity" data-speed="1.04">
+            <div class="work-card-media" data-video="movie/intro_kp_creator.mp4" data-title="STARLIGHT ATELIER PERSONA" data-category="Virtual Persona & Character Motion" data-role="Character Director, Animation, Visual Concept" data-year="2026" data-desc="감성적인 아틀리에 스튜디오를 배경으로 별빛을 건네며 환영 인사를 전하는 크리에이터 김평의 버추얼 페르소나 쇼케이스.">
+              <video class="work-preview-video" muted loop playsinline poster="img/intro_kp_creator_poster.jpg">
+                <source src="movie/intro_kp_creator.mp4" type="video/mp4">
+              </video>
+              <div class="work-media-overlay"></div>
+
+              <div class="work-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="icon-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span class="play-label">WATCH PERSONA</span>
+              </div>
+
+              <div class="work-badge-category">VIRTUAL PERSONA</div>
+              <div class="work-duration-badge">0:10</div>
+            </div>
+
+            <div class="work-info">
+              <div class="work-meta">
+                <span class="work-category">CHARACTER SHOWCASE</span>
+                <span class="work-year">2026</span>
+              </div>
+              <h3 class="work-title">Starlight Atelier Persona</h3>
+              <p class="work-excerpt">
+                따뜻한 스튜디오 조명과 유려한 손짓으로 전하는 창작자의 친근하고 프로페셔널한 인사.
+              </p>
+              <div class="work-tags">
+                <span class="tag">Virtual Identity</span>
+                <span class="tag">Lighting</span>
+                <span class="tag">Character Reel</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- KINETIC PARALLAX MARQUEE -->
+    <section class="section-marquee" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack1">
+        <div class="marquee-content">
+          <span>AI SMART VIDEO ENGINEERING</span> <span class="marquee-star">✦</span>
+          <span>VIBE CODING & THREE.JS</span> <span class="marquee-star">✦</span>
+          <span>CINEMATIC ARTISTRY</span> <span class="marquee-star">✦</span>
+          <span>CREATIVE AI & COMFYUI</span> <span class="marquee-star">✦</span>
+          <span>DIRECTOR KIM PYEONG</span> <span class="marquee-star">✦</span>
+          <span>ROYAL JEWEL MOTION</span> <span class="marquee-star">✦</span>
+        </div>
+        <div class="marquee-content">
+          <span>AI SMART VIDEO ENGINEERING</span> <span class="marquee-star">✦</span>
+          <span>VIBE CODING & THREE.JS</span> <span class="marquee-star">✦</span>
+          <span>CINEMATIC ARTISTRY</span> <span class="marquee-star">✦</span>
+          <span>CREATIVE AI & COMFYUI</span> <span class="marquee-star">✦</span>
+          <span>DIRECTOR KIM PYEONG</span> <span class="marquee-star">✦</span>
+          <span>ROYAL JEWEL MOTION</span> <span class="marquee-star">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROFILE SECTION (Character Representation & Education) -->
+    <section class="section-about" id="profile">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Left: Interactive Multi-Persona Stage -->
+          <div class="about-media-col">
+            <div class="persona-stage-wrapper" data-speed="1.05">
+              
+              <!-- Persona Showcase Panels -->
+              <div class="persona-panels">
+                <!-- Panel 1: 3D Atelier Video Persona (Default) -->
+                <div class="persona-panel active" id="persona-studio">
+                  <div class="persona-video-box">
+                    <video autoplay muted loop playsinline poster="img/intro_kp_creator_poster.jpg">
+                      <source src="movie/intro_kp_creator.mp4" type="video/mp4">
+                    </video>
+                    <div class="persona-tag">STUDIO PERSONA — VIRTUAL CREATOR</div>
+                  </div>
+                </div>
+
+                <!-- Panel 2: Color Illustration Art Persona -->
+                <div class="persona-panel" id="persona-color">
+                  <div class="persona-img-box">
+                    <img src="img/김평.png" alt="김평 오리지널 일러스트레이션" class="persona-img">
+                    <div class="persona-tag">ARTISTIC ILLUSTRATION — SIGNATURE LOOK</div>
+                  </div>
+                </div>
+
+                <!-- Panel 3: Chic Monochrome Noir Persona -->
+                <div class="persona-panel" id="persona-mono">
+                  <div class="persona-img-box">
+                    <img src="img/profile_avatar.jpg" alt="김평 흑백 시크 캐릭터" class="persona-img">
+                    <div class="persona-tag">MONOCHROME EDITION — SUPER STAR HONEY</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Persona Selector Tabs -->
+              <div class="persona-tab-bar">
+                <button class="persona-tab active" data-persona="persona-studio">
+                  <span class="tab-dot"></span>
+                  <span class="tab-name">3D ATELIER</span>
+                </button>
+                <button class="persona-tab" data-persona="persona-color">
+                  <span class="tab-dot"></span>
+                  <span class="tab-name">COLOR ART</span>
+                </button>
+                <button class="persona-tab" data-persona="persona-mono">
+                  <span class="tab-dot"></span>
+                  <span class="tab-name">MONO NOIR</span>
+                </button>
+              </div>
+
+              <!-- Floating Luxury Card Badge -->
+              <div class="persona-floating-badge" data-speed="0.85">
+                <div class="badge-avatar-mini">
+                  <img src="img/avatar_3d_circle.jpg" alt="KP Avatar">
+                </div>
+                <div class="badge-meta">
+                  <span class="badge-role">AI VIDEO ENGINEER</span>
+                  <strong class="badge-name">김평 (Kim Pyeong)</strong>
+                </div>
+                <div class="badge-status-ring"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Bio & Official Education Specification -->
+          <div class="about-text-col">
+            <span class="section-kicker">PROFILE & BACKGROUND</span>
+            <h2 class="section-title">스마트 영상 콘텐츠를 창조하는<br><span class="text-gold">크리에이티브 엔지니어 김평</span></h2>
+            
+            <p class="about-lead">
+              기술과 예술의 경계를 넘어, 인공지능과 비주얼 스토리텔링의 시너지를 완성합니다.
+            </p>
+
+            <p class="about-paragraph">
+              기획 및 콘티 단계부터 최신 생성형 AI 모델과 워크플로우를 활용한 고화질 영상 제작, 
+              감각적인 음악 및 음성 합성, 정밀한 편집 및 바이브 코딩(Vibe Coding)을 통한 웹 인터랙티브 구현까지 
+              전 과정을 원스톱으로 지휘하는 스마트 영상 콘텐츠 엔지니어입니다.
+            </p>
+
+            <!-- 교육사항 (Education Section as requested in the document) -->
+            <div class="profile-education-card">
+              <div class="edu-badge">
+                <span class="edu-icon">🎓</span>
+                <span class="edu-title">OFFICIAL EDUCATION / 교육사항</span>
+              </div>
+              <div class="edu-course-info">
+                <h3 class="edu-course-name">AI로 만드는 스마트 영상 콘텐츠 제작 엔지니어링 과정</h3>
+                <div class="edu-period-row">
+                  <span class="edu-date-badge">2026.07.20 — 2026.11.24</span>
+                  <span class="edu-status-tag">수료 (COMPLETED)</span>
+                </div>
+                <p class="edu-summary">
+                  생성형 AI(영상/이미지/사운드) 기반 파이프라인 구축, ComfyUI 워크플로우 설계, 
+                  Vibe Coding 및 Three.js 인터랙티브 구현 등 차세대 영상 콘텐츠 전문 엔지니어링 이수.
+                </p>
+              </div>
+            </div>
+
+            <!-- Milestones & Numeric Achievements -->
+            <div class="about-stats-grid">
+              <div class="stat-card">
+                <div class="stat-number" data-target="8">0</div>
+                <span class="stat-plus">+</span>
+                <div class="stat-label">YEARS EXPERIENCE</div>
+                <div class="stat-sub">영상 기획 및 총괄 디렉팅</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-number" data-target="54">0</div>
+                <span class="stat-plus">+</span>
+                <div class="stat-label">COMPLETED PROJECTS</div>
+                <div class="stat-sub">광고, 단편, AI 비디오</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-number" data-target="15">0</div>
+                <span class="stat-plus">+</span>
+                <div class="stat-label">AWARDS & HONORS</div>
+                <div class="stat-sub">국내외 영화제 및 비주얼 어워드</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-number" data-target="100">0</div>
+                <span class="stat-plus">%</span>
+                <div class="stat-label">CREATIVE EXCELLENCE</div>
+                <div class="stat-sub">타협 없는 예술적 완성도</div>
+              </div>
+            </div>
+
+            <div class="about-download-cta">
+              <a href="#contact" class="btn-luxury btn-primary nav-link" data-target="#contact">
+                <span class="btn-inner">CONTACT ME</span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <span class="contact-quick-hint">Direct Inquiry: lyumong70@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SKILL SECTION (All 8 Categories from the Specification Document) -->
+    <section class="section-skills" id="skill">
+      <div class="container">
+        <div class="section-header-centered">
+          <span class="section-kicker">TECHNICAL & ARTISTIC MASTERY</span>
+          <h2 class="section-title">CREATIVE <span class="text-gold">SKILL SET</span></h2>
+          <p class="section-desc">
+            LLM, 생성형 영상 AI, TTS 음성, 음악 합성, 전문 편집, 워크플로우 자동화부터 바이브 코딩까지.
+          </p>
+        </div>
+
+        <div class="skills-master-grid">
+          
+          <!-- Category 1: LLM & Agent -->
+          <div class="skill-category-card">
+            <div class="cat-header">
+              <div class="cat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">01</span>
+                <h3 class="cat-title">LLM & Agent</h3>
+              </div>
+            </div>
+            <p class="cat-desc">세계관 기획, 스토리보드 대본 생성, 프롬프트 엔지니어링 및 오토메이션.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">ChatGPT</span>
+              <span class="skill-pill highlight">Gemini</span>
+              <span class="skill-pill highlight">Claude</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Creative AI (Video & Image Gen) -->
+          <div class="skill-category-card featured-glow">
+            <div class="cat-header">
+              <div class="cat-icon-wrap gold-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">02</span>
+                <h3 class="cat-title">Creative AI</h3>
+              </div>
+            </div>
+            <p class="cat-desc">시네마틱 영상 합성, 키프레임 제어, 고해상도 콘셉트 아트 및 캐릭터 일관성 유지.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill">Grok</span>
+              <span class="skill-pill">Flow</span>
+              <span class="skill-pill">Seedance</span>
+              <span class="skill-pill">MiniMax</span>
+              <span class="skill-pill">Higgsfield</span>
+              <span class="skill-pill">Kling</span>
+              <span class="skill-pill highlight">Midjourney</span>
+              <span class="skill-pill">ChatGPT image2.5</span>
+              <span class="skill-pill">Nano Banana2.1</span>
+            </div>
+          </div>
+
+          <!-- Category 3: TTS (Text to Speech) -->
+          <div class="skill-category-card">
+            <div class="cat-header">
+              <div class="cat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">03</span>
+                <h3 class="cat-title">TTS (Voice Synthesis)</h3>
+              </div>
+            </div>
+            <p class="cat-desc">다국어 나레이션, 감정 표현 보이스 클로닝 및 정밀 립싱크 더빙 제작.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">Google AI Studio</span>
+              <span class="skill-pill highlight">Elevenlabs</span>
+              <span class="skill-pill">Vrew</span>
+              <span class="skill-pill">Typecast</span>
+              <span class="skill-pill">클로바 더빙</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Music (AI Audio) -->
+          <div class="skill-category-card">
+            <div class="cat-header">
+              <div class="cat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">04</span>
+                <h3 class="cat-title">Music</h3>
+              </div>
+            </div>
+            <p class="cat-desc">씬의 감정선에 맞춤화된 오리지널 BGM, 시네마틱 오케스트레이션 및 사운드트랙 생성.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">SUNO Ai</span>
+            </div>
+          </div>
+
+          <!-- Category 5: Video Editor -->
+          <div class="skill-category-card">
+            <div class="cat-header">
+              <div class="cat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">05</span>
+                <h3 class="cat-title">Video Editor</h3>
+              </div>
+            </div>
+            <p class="cat-desc">쇼츠/릴스 빠른 컷편집부터 영화 등급 컬러 그레이딩 및 오디오 마스터링.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">Capcut</span>
+              <span class="skill-pill highlight">Davinci Resolve</span>
+            </div>
+          </div>
+
+          <!-- Category 6: Workflow AI -->
+          <div class="skill-category-card featured-glow">
+            <div class="cat-header">
+              <div class="cat-icon-wrap gold-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">06</span>
+                <h3 class="cat-title">Workflow AI</h3>
+              </div>
+            </div>
+            <p class="cat-desc">노드 기반 고도화 파이프라인, ControlNet, 애니메이트디프(AnimateDiff) 커스텀 워크플로우.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">ComfyUI</span>
+            </div>
+          </div>
+
+          <!-- Category 7: Vibe Coding & 3D Web -->
+          <div class="skill-category-card">
+            <div class="cat-header">
+              <div class="cat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">07</span>
+                <h3 class="cat-title">Vibe Coding</h3>
+              </div>
+            </div>
+            <p class="cat-desc">AI 에이전트 협업 개발, 3D 웹 비주얼라이저, 프리비즈(Previs) 가상 연출.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill highlight">Antigravity</span>
+              <span class="skill-pill highlight">Codex</span>
+              <span class="skill-pill">Cowork</span>
+              <span class="skill-pill highlight">Three.js</span>
+              <span class="skill-pill">Previs</span>
+            </div>
+          </div>
+
+          <!-- Category 8: IDE & DB & Deploy -->
+          <div class="skill-category-card">
+            <div class="cat-header">
+              <div class="cat-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="cat-icon"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              </div>
+              <div class="cat-title-wrap">
+                <span class="cat-number">08</span>
+                <h3 class="cat-title">IDE, DB & Deploy</h3>
+              </div>
+            </div>
+            <p class="cat-desc">클라우드 데이터베이스 연동, 버전 관리(Git), 글로벌 CDN 고속 웹 배포 체계.</p>
+            <div class="skill-pills-wrap">
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Supabase</span>
+              <span class="skill-pill highlight">Github</span>
+              <span class="skill-pill highlight">Vercel</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. CONTACT SECTION (Specified Gmail: lyumong70@gmail.com) -->
+    <section class="section-contact" id="contact">
+      <div class="container">
+        
+        <div class="contact-card-wrapper" data-speed="0.95">
+          <div class="contact-card-inner">
+            
+            <div class="contact-header">
+              <span class="section-kicker">INITIATE COLLABORATION</span>
+              <h2 class="contact-title">LET'S CREATE A <span class="text-gold">MASTERPIECE</span></h2>
+              <p class="contact-subtitle">
+                스마트 영상 콘텐츠 제작, AI 기반 비주얼 캠페인, 바이브 코딩 웹 프로젝트를 함께 완성하세요.
+              </p>
+            </div>
+
+            <div class="contact-body-grid">
+              <!-- Left: Direct Info with Specified Gmail -->
+              <div class="contact-info-col">
+                <div class="contact-info-block highlighted-mail">
+                  <span class="info-label">OFFICIAL CONTACT GMAIL</span>
+                  <a href="mailto:lyumong70@gmail.com" class="info-val info-link mail-lead">lyumong70@gmail.com</a>
+                  <a href="mailto:lyumong70@gmail.com" class="btn-quick-mail">
+                    <span>이메일 바로 보내기</span>
+                    <span>✉</span>
+                  </a>
+                </div>
+
+                <div class="contact-info-block">
+                  <span class="info-label">CREATIVE FIELD</span>
+                  <span class="info-val">Smart AI Video Engineering & Direction</span>
+                </div>
+
+                <div class="contact-info-block">
+                  <span class="info-label">LOCATION</span>
+                  <span class="info-val">Seoul, South Korea</span>
+                </div>
+
+                <div class="contact-socials-group">
+                  <span class="info-label">CONNECT ACROSS PLATFORMS</span>
+                  <div class="social-links-row">
+                    <a href="https://youtube.com" target="_blank" rel="noopener" class="social-link-btn" aria-label="YouTube">YOUTUBE</a>
+                    <a href="https://github.com" target="_blank" rel="noopener" class="social-link-btn" aria-label="GitHub">GITHUB</a>
+                    <a href="https://vimeo.com" target="_blank" rel="noopener" class="social-link-btn" aria-label="Vimeo">VIMEO</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="social-link-btn" aria-label="Instagram">INSTAGRAM</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Interactive Inquiry Form -->
+              <div class="contact-form-col">
+                <form id="contactForm" class="luxury-form" onsubmit="return false;">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="userName">YOUR NAME / CLIENT</label>
+                      <input type="text" id="userName" name="name" required placeholder="성함 또는 기업명">
+                    </div>
+                    <div class="form-group">
+                      <label for="userEmail">EMAIL ADDRESS</label>
+                      <input type="email" id="userEmail" name="email" required placeholder="답변 받으실 이메일 주소">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="projectType">PROJECT SCOPE</label>
+                    <select id="projectType" name="type">
+                      <option value="ai-video">Smart AI Video Content Production</option>
+                      <option value="cinematic">Cinematic Film & Directing</option>
+                      <option value="commercial">Commercial CF & Brand Film</option>
+                      <option value="animation">2D / 3D Animation Production</option>
+                      <option value="vibe-coding">Vibe Coding & Web Interactive</option>
+                      <option value="other">General Collaboration</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="userMessage">PROJECT VISION & INQUIRY</label>
+                    <textarea id="userMessage" name="message" rows="4" required placeholder="프로젝트 내용, 일정, 협업 요청 사항을 자유롭게 적어주세요."></textarea>
+                  </div>
+
+                  <button type="submit" class="btn-luxury btn-submit" id="submitBtn">
+                    <span class="btn-inner">SEND INQUIRY TO LYUMONG70@GMAIL.COM</span>
+                    <span class="btn-arrow">✦</span>
+                  </button>
+
+                  <div class="form-feedback-message" id="formFeedback"></div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="luxury-footer" id="footer">
+    <div class="container footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="img/kp_logo_cropped.jpg" alt="KP Emblem" class="footer-logo-img">
+          </div>
+          <div>
+            <h3 class="footer-name">KIM PYEONG</h3>
+            <p class="footer-tagline">Smart AI Video Content Engineering & Creative Direction</p>
+          </div>
+        </div>
+
+        <!-- 1차원 메뉴 링크 -->
+        <nav class="footer-nav">
+          <a href="#home" class="footer-link nav-link" data-target="#home">HOME</a>
+          <a href="#portfolio" class="footer-link nav-link" data-target="#portfolio">PORTFOLIO</a>
+          <a href="#profile" class="footer-link nav-link" data-target="#profile">PROFILE</a>
+          <a href="#skill" class="footer-link nav-link" data-target="#skill">SKILL</a>
+          <a href="#contact" class="footer-link nav-link" data-target="#contact">CONTACT</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p class="footer-copyright">
+          © <span id="currentYear">2026</span> <strong>KIM PYEONG</strong>. All Rights Reserved. AI Smart Video Engineering Portfolio.
+        </p>
+        
+        <div class="footer-credit">
+          <span>CONTACT: LYUMONG70@GMAIL.COM</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING TOP BUTTON (Smooth Scroll to Top with Circular Progress Indicator) -->
+  <button class="btn-top" id="topBtn" aria-label="Scroll to top of page">
+    <svg class="progress-ring" width="56" height="56">
+      <circle class="progress-ring-bg" stroke="rgba(212, 175, 55, 0.2)" stroke-width="2.5" fill="transparent" r="24" cx="28" cy="28"/>
+      <circle class="progress-ring-circle" id="topProgressRing" stroke="#D4AF37" stroke-width="2.5" stroke-dasharray="150.79" stroke-dashoffset="150.79" fill="transparent" r="24" cx="28" cy="28"/>
+    </svg>
+    <div class="top-icon-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="top-arrow-svg">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+      <span class="top-text">TOP</span>
+    </div>
+  </button>
+
+  <!-- INTERACTIVE CINEMATIC VIDEO MODAL -->
+  <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-meta">
+          <span class="modal-category" id="modalCategory">CINEMATIC FILM</span>
+          <span class="modal-year" id="modalYear">2026</span>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Video Modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-video-container">
+        <video id="modalVideoPlayer" controls playsinline></video>
+      </div>
+
+      <div class="modal-info-footer">
+        <div class="modal-title-col">
+          <h3 class="modal-title" id="modalTitle">Project Title</h3>
+          <p class="modal-role" id="modalRole">Directing, Cinematography, VFX</p>
+        </div>
+        <p class="modal-desc" id="modalDesc">Project description and details...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
